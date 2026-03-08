@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", "SF Pro Display", "Helvetica Neue", sans-serif;
+  color: #edf4ff;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(71, 148, 255, 0.36), transparent 38%),
+    radial-gradient(circle at 84% 8%, rgba(35, 199, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 18% 78%, rgba(30, 65, 160, 0.34), transparent 36%),
+    linear-gradient(130deg, #030918 0%, #09183b 38%, #0a2c73 70%, #0a1f59 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(154, 189, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(154, 189, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.6), transparent 85%);
+}
+
+.glass {
+  background: linear-gradient(155deg, rgba(14, 27, 70, 0.92), rgba(11, 20, 52, 0.86));
+  border: 1px solid rgba(162, 200, 255, 0.18);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.market-hero {
+  background:
+    radial-gradient(circle at 8% 20%, rgba(56, 189, 248, 0.2), transparent 42%),
+    radial-gradient(circle at 82% 0%, rgba(96, 165, 250, 0.22), transparent 40%),
+    linear-gradient(120deg, rgba(8, 23, 62, 0.95), rgba(15, 48, 125, 0.92));
+}
+
+.metric-pill {
+  border: 1px solid rgba(170, 211, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.score-ring {
+  background: conic-gradient(
+    #fb7185 0%,
+    #fb923c 20%,
+    #facc15 42%,
+    #22d3ee 68%,
+    #10b981 100%
+  );
+}

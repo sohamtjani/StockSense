@@ -1,0 +1,112 @@
+[
+  {
+    "id": "n1",
+    "ticker": "NVDA",
+    "headline": "NVIDIA expands AI partnerships with cloud providers",
+    "summary": "New enterprise deals increase confidence in AI chip demand.",
+    "url": "https://example.com/nvda-1",
+    "source": "MarketPulse",
+    "publishedAt": "2026-03-06T18:10:29.962Z",
+    "sentiment": "positive"
+  },
+  {
+    "id": "n2",
+    "ticker": "NVDA",
+    "headline": "Analysts warn chip supply constraints could pressure margins",
+    "summary": "Some firms see short-term execution risk despite growth.",
+    "url": "https://example.com/nvda-2",
+    "source": "Daily Street",
+    "publishedAt": "2026-03-05T18:10:29.962Z",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "n3",
+    "ticker": "AAPL",
+    "headline": "Apple services revenue posts strong growth",
+    "summary": "Higher subscriptions support steady earnings quality.",
+    "url": "https://example.com/aapl-1",
+    "source": "Finance Beacon",
+    "publishedAt": "2026-03-06T18:10:29.962Z",
+    "sentiment": "positive"
+  },
+  {
+    "id": "n4",
+    "ticker": "AAPL",
+    "headline": "iPhone demand cools in select international markets",
+    "summary": "Investors watch upgrade cycles for next quarter.",
+    "url": "https://example.com/aapl-2",
+    "source": "Global Markets",
+    "publishedAt": "2026-03-04T18:10:29.962Z",
+    "sentiment": "negative"
+  },
+  {
+    "id": "n5",
+    "ticker": "TSLA",
+    "headline": "Tesla cuts prices in major regions",
+    "summary": "Price cuts may help demand but pressure profitability.",
+    "url": "https://example.com/tsla-1",
+    "source": "Auto Alpha",
+    "publishedAt": "2026-03-06T18:10:29.962Z",
+    "sentiment": "negative"
+  },
+  {
+    "id": "n6",
+    "ticker": "TSLA",
+    "headline": "Tesla energy storage business reports record installations",
+    "summary": "Energy segment momentum offsets part of EV uncertainty.",
+    "url": "https://example.com/tsla-2",
+    "source": "Energy Wire",
+    "publishedAt": "2026-03-03T18:10:29.962Z",
+    "sentiment": "positive"
+  },
+  {
+    "id": "n7",
+    "ticker": "MSFT",
+    "headline": "Microsoft cloud growth beats expectations",
+    "summary": "Azure performance lifts confidence in enterprise demand.",
+    "url": "https://example.com/msft-1",
+    "source": "Tech Ledger",
+    "publishedAt": "2026-03-06T18:10:29.962Z",
+    "sentiment": "positive"
+  },
+  {
+    "id": "n8",
+    "ticker": "MSFT",
+    "headline": "Regulators review enterprise software bundling practices",
+    "summary": "Legal process introduces a moderate headline risk.",
+    "url": "https://example.com/msft-2",
+    "source": "Policy Watch",
+    "publishedAt": "2026-03-02T18:10:29.962Z",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "g1",
+    "ticker": "GOOGL",
+    "headline": "Alphabet cloud revenue climbs as enterprise AI demand grows",
+    "summary": "Stronger cloud adoption supports long-term growth expectations.",
+    "url": "https://example.com/g1",
+    "source": "Tech Ledger",
+    "publishedAt": "2026-03-06T18:49:14.900Z",
+    "sentiment": "positive"
+  },
+  {
+    "id": "g2",
+    "ticker": "GOOGL",
+    "headline": "Alphabet faces antitrust hearing updates in ad business",
+    "summary": "Regulatory headlines create medium-term uncertainty.",
+    "url": "https://example.com/g2",
+    "source": "Policy Watch",
+    "publishedAt": "2026-03-04T18:49:14.900Z",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "g3",
+    "ticker": "GOOGL",
+    "headline": "Analysts raise price targets after ad market rebound",
+    "summary": "Advertising strength improves confidence in earnings momentum.",
+    "url": "https://example.com/g3",
+    "source": "MarketPulse",
+    "publishedAt": "2026-03-02T18:49:14.900Z",
+    "sentiment": "positive"
+  }
+]
