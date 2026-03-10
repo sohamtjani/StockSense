@@ -11,10 +11,6 @@ It turns noisy stock data into clear, visual learning moments:
 
 The goal is simple: make stock learning feel more like guided practice and less like guessing.
 
-## The Product in One Line
-
-**StockSense is Duolingo-style stock analysis for students.**
-
 ## What Makes StockSense Different
 
 - **Plain-language first:** insights are written for beginners, not analysts.
