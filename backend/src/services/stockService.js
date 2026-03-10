@@ -213,6 +213,9 @@ export async function getStockDashboard(tickerInput, period = "1m") {
   const days = periodToDays(period);
   const chart = prices.slice(-days).map((p) => ({
     date: p.date,
+    open: p.open,
+    high: p.high,
+    low: p.low,
     close: p.close,
     volume: p.volume
   }));

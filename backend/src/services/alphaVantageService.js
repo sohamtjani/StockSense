@@ -96,6 +96,9 @@ export async function getDailySeries(symbol) {
   const points = data
     .map((item) => ({
       date: item.date,
+      open: asNum(item.open),
+      high: asNum(item.high),
+      low: asNum(item.low),
       close: asNum(item.close),
       volume: asNum(item.volume)
     }))

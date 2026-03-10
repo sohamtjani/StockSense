@@ -4,11 +4,19 @@ import { getInsightsForQuery } from "../services/insightsService.js";
 
 const router = express.Router();
 const restrictionPattern = /(FMP HTTP 402|Restricted Endpoint|Premium Query Parameter)/i;
+const fmpRateLimitPattern = /(FMP HTTP 429)/i;
+const geminiQuotaPattern = /(Gemini quota exceeded|RESOURCE_EXHAUSTED|generate_content_free_tier|quota exceeded)/i;
 
 function formatErrorMessage(error, fallbackTicker = "") {
   const raw = String(error?.message || "Unknown error");
   if (restrictionPattern.test(raw) && fallbackTicker) {
     return `Basic Plan Doesn't Include ${String(fallbackTicker).toUpperCase()}`;
+  }
+  if (fmpRateLimitPattern.test(raw)) {
+    return "Financial Modeling Prep rate limit reached. Please retry in about a minute.";
+  }
+  if (geminiQuotaPattern.test(raw)) {
+    return "Gemini quota exceeded for this API key. Enable Gemini API billing or use a key/project with available quota.";
   }
   return raw;
 }
