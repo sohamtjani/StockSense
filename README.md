@@ -22,21 +22,21 @@ The goal is simple: make stock learning feel more like guided practice and less 
 
 StockSense now includes a full chart-learning mode where users can turn concepts on/off and learn what each one means:
 
-1. Price Candles  
-2. Volume  
-3. 20-Day Moving Average  
-4. 50-Day Moving Average  
-5. 200-Day Moving Average  
-6. Support Levels  
-7. Resistance Levels  
-8. Trend Lines  
-9. RSI  
-10. Bollinger Bands  
+1. **Price Candles** — Each candle shows a stock’s opening, closing, highest, and lowest price for a set time period.
+2. **Volume** — Volume shows how many shares were traded during that period, which helps show how strong the buying or selling was.
+3. **20-Day Moving Average** — The average closing price over the last 20 days, used to track short-term trend direction.
+4. **50-Day Moving Average** — The average closing price over the last 50 days, used to spot the medium-term trend.
+5. **200-Day Moving Average** — The average closing price over the last 200 days, often used to judge the long-term trend.
+6. **Support Levels** — Price areas where a stock tends to stop falling because buyers usually step in.
+7. **Resistance Levels** — Price areas where a stock tends to stop rising because sellers usually step in.
+8. **Trend Lines** — Straight lines drawn on a chart to show the general direction prices have been moving.
+9. **RSI** — A momentum indicator that shows whether a stock may be overbought or oversold based on recent price moves.
+10. **Bollinger Bands** — Bands placed above and below a moving average to show whether price is relatively high, low, or unusually volatile.
 
 Each toggle includes a built-in info popup that explains:
 
-- what the indicator shows and what a student gains from reading it
-- why it matters for long-term growth and better decision-making
+- What the indicator shows and what a student gains from understanding it.
+- Why it matters for long-term growth and better decision-making
 
 ## Student Experience
 
@@ -54,9 +54,9 @@ They fail because the tools are confusing, intimidating, and overloaded with jar
 
 StockSense is designed to close that gap and help students build:
 
-- confidence
-- consistency
-- healthy, long-term investing habits
+- Confidence.
+- Consistency.
+- Healthy, long-term investing habits.
 
 ## Quick Start
 
