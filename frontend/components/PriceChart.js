@@ -19,62 +19,82 @@ const TOGGLE_DEFS = [
   {
     key: "candles",
     label: "Price Candles",
-    shortTerm: "Shows each day open/high/low/close so you can see if a move was strong or weak intraday.",
-    longTerm: "Helps you see how daily structure builds larger trends over weeks and months."
+    whatItDoes:
+      "Shows each day’s open, high, low, and close so you can tell if buyers or sellers controlled that day and how strong the move was.",
+    longRunGrowth:
+      "Learning daily price behavior helps you build patience and discipline, so you make decisions from trend context instead of emotion."
   },
   {
     key: "volume",
     label: "Volume",
-    shortTerm: "Confirms if a price move had real participation or was a low-conviction move.",
-    longTerm: "Persistent high volume around key moves often marks durable trend shifts."
+    whatItDoes:
+      "Shows how many shares traded each day, so you can judge whether a price move had real participation behind it.",
+    longRunGrowth:
+      "Over time, using volume helps you focus on stronger moves and avoid weak signals, which improves decision quality."
   },
   {
     key: "ma20",
     label: "20-Day MA",
-    shortTerm: "Smooths noise to show near-term momentum and short trend direction.",
-    longTerm: "Useful for timing entries in the context of a broader trend, not for predicting tops/bottoms."
+    whatItDoes:
+      "Smooths daily noise into a short trend line so you can see near-term direction more clearly.",
+    longRunGrowth:
+      "Using short moving averages teaches you to follow trend structure instead of reacting to every single day."
   },
   {
     key: "ma50",
     label: "50-Day MA",
-    shortTerm: "A steadier trend line than MA20; helps avoid overreacting to daily swings.",
-    longTerm: "A core institutional reference line that often acts like dynamic support/resistance."
+    whatItDoes:
+      "Gives a steadier medium-term trend view than the 20-day line, helping you filter out short-term noise.",
+    longRunGrowth:
+      "Tracking the 50-day trend helps you stay aligned with healthier market structure and avoid impulsive trades."
   },
   {
     key: "ma200",
     label: "200-Day MA",
-    shortTerm: "Keeps short-term trades grounded in the bigger market direction.",
-    longTerm: "One of the best big-picture trend filters for bull vs. bear regimes."
+    whatItDoes:
+      "Shows the big-picture long-term direction so you can quickly see whether a stock is broadly trending up or down.",
+    longRunGrowth:
+      "Respecting long-term trend context reduces overtrading and supports steady, risk-aware investing habits."
   },
   {
     key: "support",
     label: "Support Levels",
-    shortTerm: "Highlights areas where buyers have stepped in before, which can aid risk planning.",
-    longTerm: "Repeated support zones reveal long-term demand and sentiment floors."
+    whatItDoes:
+      "Highlights price zones where stocks often stopped falling before, showing where buyers have historically stepped in.",
+    longRunGrowth:
+      "Understanding support helps you plan risk better and avoid panic decisions when price pulls back."
   },
   {
     key: "resistance",
     label: "Resistance Levels",
-    shortTerm: "Marks areas where rallies previously stalled and sellers became active.",
-    longTerm: "Breaks above repeated resistance can signal structural trend improvement."
+    whatItDoes:
+      "Marks areas where price has struggled to move higher, which can signal potential selling pressure.",
+    longRunGrowth:
+      "Watching resistance teaches you to wait for stronger confirmation before assuming a breakout will continue."
   },
   {
     key: "trendLines",
     label: "Trend Lines",
-    shortTerm: "Shows whether the recent trend is still intact, flattening, or breaking.",
-    longTerm: "Trend channels teach market structure better than single-day price reactions."
+    whatItDoes:
+      "Draws simple directional guide lines so you can see if the trend is still healthy, weakening, or breaking.",
+    longRunGrowth:
+      "Trend-line context helps you build consistency by making decisions from structure, not short-term fear or hype."
   },
   {
     key: "rsi",
     label: "RSI",
-    shortTerm: "Measures momentum stretch (overheated vs. weak) so you avoid chasing extremes blindly.",
-    longTerm: "Useful as a context signal to compare momentum cycles across regimes."
+    whatItDoes:
+      "Measures momentum strength to show when price may be stretched or cooling off, beyond what raw price alone shows.",
+    longRunGrowth:
+      "Using RSI as a supporting signal helps you avoid chasing extremes and improves timing discipline over many trades."
   },
   {
     key: "bollinger",
     label: "Bollinger Bands",
-    shortTerm: "Shows when price is unusually stretched from its recent average.",
-    longTerm: "Helps understand volatility expansion/compression cycles over time."
+    whatItDoes:
+      "Wraps price with an upper and lower band to show when movement is unusually calm or unusually stretched.",
+    longRunGrowth:
+      "Learning volatility cycles helps you choose smarter risk levels and hold positions with better expectation management."
   }
 ];
 
@@ -392,10 +412,10 @@ export default function PriceChart({ data }) {
         <div className="mt-3 rounded-xl border border-cyan-300/30 bg-cyan-500/10 p-3 text-xs text-cyan-50">
           <p className="font-bold uppercase tracking-[0.1em] text-cyan-100">{activeInfoCopy.label}</p>
           <p className="mt-1">
-            <span className="font-semibold text-cyan-200">Short term:</span> {activeInfoCopy.shortTerm}
+            <span className="font-semibold text-cyan-200">What it does + what you gain:</span> {activeInfoCopy.whatItDoes}
           </p>
           <p className="mt-1">
-            <span className="font-semibold text-cyan-200">Long term:</span> {activeInfoCopy.longTerm}
+            <span className="font-semibold text-cyan-200">Why it matters for long-run growth:</span> {activeInfoCopy.longRunGrowth}
           </p>
         </div>
       ) : null}
