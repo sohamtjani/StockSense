@@ -107,12 +107,20 @@ export default function DashboardView() {
     <main className="mx-auto max-w-[1360px] px-4 py-6 md:px-6">
       <div className="mb-4 flex items-center justify-between">
         <p className="text-xs uppercase tracking-[0.2em] text-blue-100/70">StockSense Dashboard</p>
-        <Link
-          href="/"
-          className="rounded-full border border-blue-200/30 bg-white/5 px-3 py-1.5 text-xs font-semibold text-blue-100 transition hover:border-cyan-200/60 hover:text-cyan-100"
-        >
-          Back to Landing
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/essentials?source=dashboard"
+            className="rounded-full border border-blue-200/30 bg-white/5 px-3 py-1.5 text-xs font-semibold text-blue-100 transition hover:border-cyan-200/60 hover:text-cyan-100"
+          >
+            Essentials
+          </Link>
+          <Link
+            href="/"
+            className="rounded-full border border-blue-200/30 bg-white/5 px-3 py-1.5 text-xs font-semibold text-blue-100 transition hover:border-cyan-200/60 hover:text-cyan-100"
+          >
+            Back to Landing
+          </Link>
+        </div>
       </div>
 
       <section className="mb-5 grid gap-4 xl:grid-cols-12">
