@@ -75,4 +75,4 @@ Then open your local app in the browser.
 
 ---
 
-Built for students who want to understand the market, not just react to it.
+Built for students who want to understand the market and control their future.
