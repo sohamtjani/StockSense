@@ -1,213 +1,219 @@
-"use client";
+import Link from "next/link";
+import MarketingNav from "@/components/MarketingNav";
 
-import { useEffect, useMemo, useState } from "react";
-import InsightsPanel from "@/components/InsightsPanel";
-import NewsPanel from "@/components/NewsPanel";
-import PriceChart from "@/components/PriceChart";
-import ScoreMeter from "@/components/ScoreMeter";
-import SignalCards from "@/components/SignalCards";
-import StockSearchBar from "@/components/StockSearchBar";
-import WatchlistPanel from "@/components/WatchlistPanel";
-import { apiGet, apiPost } from "@/lib/api";
-
-const periods = [
-  { key: "1w", label: "1D-1W" },
-  { key: "1m", label: "1 Month" },
-  { key: "3m", label: "3 Months" }
+const pillars = [
+  {
+    title: "Clarity First",
+    body: "Students get plain-language signals instead of financial jargon and dashboard clutter."
+  },
+  {
+    title: "Confidence Through Structure",
+    body: "Every stock view answers trend, risk, and attention with a consistent, teachable framework."
+  },
+  {
+    title: "Built for Education",
+    body: "Designed for high school, college, and edtech programs focused on long-term financial literacy."
+  }
 ];
 
-const WATCHLIST_KEY = "stocksense_watchlist";
+const metrics = [
+  { value: "3", label: "Core Questions answered instantly" },
+  { value: "10", label: "Educational chart toggles" },
+  { value: "0", label: "Login friction for students" },
+  { value: "1", label: "Unified student-first workflow" }
+];
 
-export default function HomePage() {
-  const [query, setQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [ticker, setTicker] = useState("NVDA");
-  const [period, setPeriod] = useState("1m");
-  const [dashboard, setDashboard] = useState(null);
-  const [watchlist, setWatchlist] = useState([]);
-  const [insights, setInsights] = useState(null);
-  const [loadingInsights, setLoadingInsights] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(WATCHLIST_KEY);
-      if (stored) setWatchlist(JSON.parse(stored));
-    } catch {
-      setWatchlist([]);
-    }
-  }, []);
-
-  useEffect(() => {
-    const run = async () => {
-      try {
-        const res = await apiGet(`/stocks/search?q=${encodeURIComponent(query)}`);
-        setSearchResults(res.results || []);
-      } catch {
-        setSearchResults([]);
-      }
-    };
-    const t = setTimeout(run, 180);
-    return () => clearTimeout(t);
-  }, [query]);
-
-  useEffect(() => {
-    const run = async () => {
-      try {
-        setError("");
-        const res = await apiGet(`/stocks/${ticker}?period=${period}`);
-        setDashboard(res);
-        setInsights(null);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-    run();
-  }, [ticker, period]);
-
-  function addToWatchlist() {
-    if (!dashboard?.stock?.ticker) return;
-    const next = [...new Set([...watchlist, dashboard.stock.ticker])];
-    setWatchlist(next);
-    window.localStorage.setItem(WATCHLIST_KEY, JSON.stringify(next));
+const featureRows = [
+  {
+    title: "Beginner-first stock analysis",
+    summary: "Simplified bullish/bearish scoring so students understand direction without decoding advanced technical language."
+  },
+  {
+    title: "Interactive chart learning mode",
+    summary: "A guided indicator lab where students can turn concepts on/off and learn what each one means for short and long horizons."
+  },
+  {
+    title: "Context-rich market explanation",
+    summary: "Students see why investors are paying attention right now, paired with a clear risk and momentum story."
+  },
+  {
+    title: "Built for instructional settings",
+    summary: "Designed to work for classrooms, clubs, and edtech pilots where clarity, consistency, and explainability matter."
   }
+];
 
-  async function handleGetInfo() {
-    const target = query.trim() || dashboard?.stock?.ticker;
-    if (!target) {
-      setError("Type a ticker or industry before requesting insights.");
-      return;
-    }
-
-    try {
-      setError("");
-      setLoadingInsights(true);
-      const res = await apiPost("/stocks/insights", { query: target });
-      setInsights(res);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoadingInsights(false);
-    }
+const useCases = [
+  {
+    title: "High School Finance Programs",
+    body: "Use StockSense in class discussions to help students connect market events with practical financial literacy skills."
+  },
+  {
+    title: "College Intro Investing Clubs",
+    body: "Give beginners a common framework so meetings focus on reasoning and discipline instead of noise."
+  },
+  {
+    title: "EdTech Product Integrations",
+    body: "Embed a modern, student-friendly market experience into broader career readiness and personal finance products."
   }
+];
 
-  const header = useMemo(() => {
-    if (!dashboard) return null;
-    return {
-      name: dashboard.stock.companyName,
-      ticker: dashboard.stock.ticker,
-      sector: dashboard.stock.sector,
-      price: dashboard.price,
-      marketCap: dashboard.stock.marketCap
-    };
-  }, [dashboard]);
+const faq = [
+  {
+    q: "Is this designed for advanced traders?",
+    a: "No. StockSense is built for students and educators who need understandable market interpretation, not high-frequency trading workflows."
+  },
+  {
+    q: "Does this replace a full broker platform?",
+    a: "No. It is a learning and interpretation layer that helps users build confidence before making real-world decisions."
+  },
+  {
+    q: "Can schools use this as part of curriculum?",
+    a: "Yes. The product is intentionally structured for classroom discussion, student projects, and introductory investing education."
+  }
+];
 
+export default function LandingPage() {
   return (
-    <main className="mx-auto max-w-[1360px] px-4 py-6 md:px-6">
-      <section className="mb-5 grid gap-4 xl:grid-cols-12">
-        <div className="market-hero rounded-3xl p-6 xl:col-span-8">
-          <p className="text-xs uppercase tracking-[0.25em] text-cyan-200/90">StockSense • Market View</p>
-          {header ? (
-            <>
-              <div className="mt-3 flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <h1 className="text-4xl font-black tracking-tight md:text-5xl">
-                    {header.ticker}
-                    <span className="ml-3 text-xl font-semibold text-cyan-200/90 md:text-2xl">{header.name}</span>
-                  </h1>
-                  <p className="mt-2 text-sm text-blue-100/80">{header.sector}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-xs uppercase tracking-wider text-blue-100/70">Current Price</p>
-                  <p className="text-4xl font-black">${header.price.toFixed(2)}</p>
-                </div>
-              </div>
+    <main className="cluely-shell relative min-h-screen overflow-hidden text-white">
+      <div className="marketing-aurora" aria-hidden="true">
+        <span className="marketing-orb orb-a" />
+        <span className="marketing-orb orb-b" />
+        <span className="marketing-orb orb-c" />
+      </div>
 
-              <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
-                <div className="metric-pill rounded-xl px-3 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-blue-100/70">Status</p>
-                  <p className="text-sm font-bold">{dashboard.status}</p>
-                </div>
-                <div className="metric-pill rounded-xl px-3 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-blue-100/70">Market Cap</p>
-                  <p className="text-sm font-bold">${(header.marketCap / 1_000_000_000).toFixed(0)}B</p>
-                </div>
-                <div className="metric-pill rounded-xl px-3 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-blue-100/70">P/E Ratio</p>
-                  <p className="text-sm font-bold">{dashboard.stock.peRatio}</p>
-                </div>
-                <div className="metric-pill rounded-xl px-3 py-2">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-blue-100/70">Earnings Growth</p>
-                  <p className="text-sm font-bold">{Math.round(dashboard.stock.earningsGrowth * 100)}%</p>
-                </div>
-              </div>
-            </>
-          ) : null}
-        </div>
+      <section className="relative z-10 mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-10">
+        <MarketingNav />
 
-        <div className="space-y-4 xl:col-span-4">
-          <StockSearchBar
-            query={query}
-            setQuery={setQuery}
-            results={searchResults}
-            onSelect={(t) => {
-              setTicker(t);
-              setQuery("");
-            }}
-            onGetInfo={handleGetInfo}
-            infoLoading={loadingInsights}
-          />
-          <WatchlistPanel items={watchlist} onPick={(t) => setTicker(t)} />
-        </div>
-      </section>
+        <header className="cluely-panel mb-14 mt-8 rounded-2xl px-5 py-5 md:px-7">
+          <div>
+            <p className="text-xs uppercase tracking-[0.22em] text-blue-50/80">StockSense</p>
+            <h1 className="text-xl font-semibold tracking-tight text-white md:text-2xl">Student Financial Intelligence Platform</h1>
+          </div>
+        </header>
 
-      <section className="grid gap-4 xl:grid-cols-12">
-        <div className="space-y-4 xl:col-span-4">
-          {dashboard ? <ScoreMeter score={dashboard.bullishScore} status={dashboard.status} /> : null}
-          <button onClick={addToWatchlist} className="w-full rounded-xl bg-cyan-300 px-4 py-3 text-sm font-extrabold uppercase tracking-wide text-slate-900">
-            Save {dashboard?.stock?.ticker || "Stock"} to Your List
-          </button>
-          <InsightsPanel
-            insights={insights}
-            loading={loadingInsights}
-            onRequest={handleGetInfo}
-            hasTarget={Boolean(query.trim() || dashboard?.stock?.ticker)}
-          />
-        </div>
+        <div className="grid items-stretch gap-6 lg:grid-cols-12">
+          <section className="cluely-panel-strong rounded-3xl p-7 lg:col-span-7 md:p-10">
+            <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">For EdTech, Schools, and Student Programs</p>
+            <h2 className="cluely-display mt-3 text-5xl font-medium leading-[1.03] text-white md:text-7xl">
+              Financial education should feel clear, calm, and actionable.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-blue-50/88 md:text-lg">
+              StockSense gives students a professional market experience without the confusion of traditional finance tools. It translates complex signals into plain language, reduces intimidation, and helps learners build real long-term literacy.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3.5">
+              <Link
+                href="/dashboard"
+                className="cluely-cta rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition"
+              >
+                Experience StockSense
+              </Link>
+              <Link href="/about" className="cluely-ghost rounded-xl px-5 py-3 text-sm font-semibold text-blue-50">
+                Why this matters
+              </Link>
+            </div>
 
-        <div className="space-y-4 xl:col-span-8">
-          {error ? <div className="rounded-xl border border-rose-300/40 bg-rose-500/20 px-3 py-2 text-sm text-rose-100">{error}</div> : null}
-
-          {dashboard ? <SignalCards signals={dashboard.signals} /> : null}
-
-          <div className="glass rounded-3xl p-3">
-            <div className="mb-3 flex gap-2">
-              {periods.map((p) => (
-                <button
-                  key={p.key}
-                  onClick={() => setPeriod(p.key)}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold ${
-                    p.key === period ? "bg-cyan-300 text-slate-900" : "bg-white/10 text-blue-100"
-                  }`}
-                >
-                  {p.label}
-                </button>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {metrics.map((item) => (
+                <article key={item.label} className="rounded-xl border border-[#c7e0ff]/45 bg-[#f2f8ff]/14 p-4">
+                  <p className="text-2xl font-semibold text-white">{item.value}</p>
+                  <p className="mt-1 text-sm text-blue-50/86">{item.label}</p>
+                </article>
               ))}
             </div>
-            {dashboard ? <PriceChart data={dashboard.chart} /> : null}
+          </section>
+
+          <section className="cluely-panel overflow-hidden rounded-3xl lg:col-span-5">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
+              alt="Students collaborating in a learning environment"
+              className="h-64 w-full object-cover opacity-92 md:h-72"
+              loading="lazy"
+            />
+            <div className="p-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Public Image Asset</p>
+              <p className="mt-2 text-base leading-relaxed text-white">
+                A product experience designed for institutions that want measurable student confidence in financial decision-making.
+              </p>
+              <p className="mt-3 text-xs text-blue-50/70">Image source: Unsplash (free-to-use public license).</p>
+            </div>
+          </section>
+        </div>
+
+        <section className="cluely-panel mt-8 rounded-3xl p-7 md:p-9">
+          <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Why This Model Works for Student Learning</p>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {pillars.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-[#cde4ff]/45 bg-[#eff7ff]/18 p-5">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-blue-50/84">{item.body}</p>
+              </article>
+            ))}
           </div>
+        </section>
 
-          {dashboard ? <NewsPanel news={dashboard.news} /> : null}
-        </div>
-      </section>
+        <section className="cluely-panel mt-8 rounded-3xl p-7 md:p-9">
+          <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Product Capabilities</p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            {featureRows.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-[#cde4ff]/45 bg-[#eff7ff]/18 p-5">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-blue-50/84">{item.summary}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <footer className="mt-8 rounded-2xl border border-blue-200/15 bg-white/5 px-4 py-4 text-sm text-blue-100/85">
-        <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+        <section className="cluely-panel mt-8 rounded-3xl p-7 md:p-9">
+          <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Where Teams Use StockSense</p>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {useCases.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-[#cde4ff]/45 bg-[#eff7ff]/18 p-5">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-blue-50/84">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cluely-panel mt-8 rounded-3xl p-7 md:p-9">
+          <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Frequently Asked Questions</p>
+          <div className="mt-5 space-y-3">
+            {faq.map((item) => (
+              <article key={item.q} className="rounded-xl border border-[#cde4ff]/45 bg-[#eff7ff]/18 p-5">
+                <h3 className="text-base font-semibold text-white">{item.q}</h3>
+                <p className="mt-2 text-sm text-blue-50/84">{item.a}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cluely-panel-strong mt-8 rounded-3xl p-7 md:p-9">
+          <h3 className="cluely-display text-3xl font-medium text-white md:text-4xl">Ready to give students a clearer path into markets?</h3>
+          <p className="mt-3 max-w-2xl text-blue-50/85">
+            Start with the live StockSense experience and see how student-first design can transform financial literacy outcomes.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3.5">
+            <Link
+              href="/dashboard"
+              className="cluely-cta rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition"
+            >
+              Experience StockSense
+            </Link>
+            <Link href="/contact" className="cluely-ghost rounded-xl px-5 py-3 text-sm font-semibold text-blue-50">
+              Contact the Team
+            </Link>
+          </div>
+        </section>
+
+        <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-[#d0e5ff]/38 pt-5 text-sm text-blue-50/82">
           <p>StockSense 2026</p>
-          <p>Contact: sohamjani8@gmail.com</p>
-          <p>Soham Jani 2026</p>
-        </div>
-      </footer>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/about" className="hover:text-white">About</Link>
+            <Link href="/contact" className="hover:text-white">Contact</Link>
+            <Link href="/dashboard" className="hover:text-white">Experience</Link>
+          </div>
+        </footer>
+      </section>
     </main>
   );
 }

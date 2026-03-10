@@ -60,3 +60,131 @@ body::before {
     #10b981 100%
   );
 }
+
+.marketing-aurora {
+  position: absolute;
+  inset: -12% -10% auto -10%;
+  height: 72vh;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.marketing-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(46px);
+  opacity: 0.42;
+  will-change: transform;
+}
+
+.marketing-orb.orb-a {
+  width: 34rem;
+  height: 34rem;
+  left: 6%;
+  top: 5%;
+  background: radial-gradient(circle, rgba(98, 160, 255, 0.72), rgba(98, 160, 255, 0.02));
+  animation: driftA 16s ease-in-out infinite;
+}
+
+.marketing-orb.orb-b {
+  width: 28rem;
+  height: 28rem;
+  right: 7%;
+  top: 18%;
+  background: radial-gradient(circle, rgba(46, 117, 255, 0.66), rgba(46, 117, 255, 0.02));
+  animation: driftB 20s ease-in-out infinite;
+}
+
+.marketing-orb.orb-c {
+  width: 24rem;
+  height: 24rem;
+  left: 38%;
+  top: -4%;
+  background: radial-gradient(circle, rgba(165, 205, 255, 0.72), rgba(165, 205, 255, 0.02));
+  animation: driftC 14s ease-in-out infinite;
+}
+
+.cluely-shell {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(52, 128, 255, 0.48), transparent 34%),
+    radial-gradient(circle at 78% 8%, rgba(134, 193, 255, 0.4), transparent 40%),
+    radial-gradient(circle at 50% 52%, rgba(110, 170, 255, 0.2), transparent 48%),
+    linear-gradient(180deg, #4a99ea 0%, #6eaef2 42%, #d9e9fb 100%);
+}
+
+.cluely-nav {
+  border: 1px solid rgba(215, 235, 255, 0.45);
+  background: linear-gradient(180deg, rgba(31, 91, 176, 0.45), rgba(25, 72, 143, 0.25));
+  box-shadow: 0 16px 38px rgba(12, 43, 96, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+.cluely-panel {
+  border: 1px solid rgba(219, 236, 255, 0.5);
+  background: linear-gradient(180deg, rgba(236, 246, 255, 0.26), rgba(219, 236, 255, 0.12));
+  box-shadow: 0 14px 30px rgba(20, 56, 117, 0.16);
+  backdrop-filter: blur(9px);
+}
+
+.cluely-panel-strong {
+  border: 1px solid rgba(210, 233, 255, 0.58);
+  background: linear-gradient(180deg, rgba(45, 117, 229, 0.36), rgba(68, 144, 247, 0.26));
+  box-shadow: 0 20px 45px rgba(15, 58, 132, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.cluely-display {
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+.cluely-cta {
+  border: 1px solid rgba(171, 209, 255, 0.62);
+  background: linear-gradient(180deg, #2d7bff, #2060db);
+  box-shadow: 0 10px 24px rgba(27, 92, 210, 0.5);
+}
+
+.cluely-cta:hover {
+  background: linear-gradient(180deg, #3f8dff, #2a6be8);
+}
+
+.cluely-ghost {
+  border: 1px solid rgba(190, 219, 255, 0.7);
+  background: rgba(235, 247, 255, 0.16);
+}
+
+@keyframes driftA {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(36px, -18px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes driftB {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-30px, 20px, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes driftC {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(20px, 16px, 0) scale(0.94);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
