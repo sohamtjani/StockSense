@@ -70,13 +70,13 @@ export default function AboutPage() {
 
           <div className="mt-9 flex flex-wrap gap-3.5">
             <Link href="/dashboard" className="cluely-cta rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white">
-              Experience StockSense
+              Try StockSense
             </Link>
             <Link href="/contact" className="cluely-ghost rounded-xl px-5 py-3 text-sm font-semibold text-blue-50">
-              Contact Our Team
+              Contact
             </Link>
             <Link href="/" className="cluely-ghost rounded-xl px-5 py-3 text-sm font-semibold text-blue-50">
-              Back to Landing
+              Return to Login
             </Link>
           </div>
         </div>

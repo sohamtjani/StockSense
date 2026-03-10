@@ -179,9 +179,9 @@ export default function LandingPage() {
           <p className="text-xs uppercase tracking-[0.2em] text-blue-50/80">Frequently Asked Questions</p>
           <div className="mt-5 space-y-3">
             {faq.map((item) => (
-              <article key={item.q} className="rounded-xl border border-[#cde4ff]/45 bg-[#eff7ff]/18 p-5">
-                <h3 className="text-base font-semibold text-white">{item.q}</h3>
-                <p className="mt-2 text-sm text-blue-50/84">{item.a}</p>
+              <article key={item.q} className="rounded-xl border border-[#cfe4ff]/42 bg-[#15396d]/52 p-5">
+                <h3 className="cluely-readable text-base font-semibold">{item.q}</h3>
+                <p className="cluely-readable mt-2 text-sm">{item.a}</p>
               </article>
             ))}
           </div>
@@ -205,12 +205,12 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-[#d0e5ff]/38 pt-5 text-sm text-blue-50/82">
+        <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#d0e5ff]/45 bg-[#143a70]/45 px-4 py-4 text-sm text-white">
           <p>StockSense 2026</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/about" className="hover:text-white">About</Link>
-            <Link href="/contact" className="hover:text-white">Contact</Link>
-            <Link href="/dashboard" className="hover:text-white">Experience</Link>
+            <Link href="/about" className="text-blue-50/95 underline-offset-4 hover:text-white hover:underline">About</Link>
+            <Link href="/contact" className="text-blue-50/95 underline-offset-4 hover:text-white hover:underline">Contact</Link>
+            <Link href="/dashboard" className="text-blue-50/95 underline-offset-4 hover:text-white hover:underline">Experience</Link>
           </div>
         </footer>
       </section>
