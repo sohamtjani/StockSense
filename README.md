@@ -1,64 +1,68 @@
 # StockSense
 
-StockSense is a student-friendly financial dashboard that turns stock data into plain-language bullish/bearish signals.
+## Investing Clarity for Students
 
-## What is implemented
+StockSense is built for people who are new to markets and tired of dashboards that feel like they require a finance degree.  
+It turns noisy stock data into clear, visual learning moments:
 
-- Next.js + Tailwind frontend with a modern market-style UI
-- Express backend with local JSON data storage
-- Weighted bullish/bearish score engine (0-100)
-- Student-readable signal cards:
-  - Momentum
-  - Investor Activity
-  - News Sentiment
-  - Volatility
-  - Company Strength
-  - Risk Level
-- Search by company, ticker, or sector
-- `Get Info` button for student-friendly AI insight summaries
-- Price chart with 1W / 1M / 3M view
-- Recent news panel with sentiment labels
-- Open access dashboard (no login required)
-- Local-device watchlist persistence
-- In-memory caching:
-  - Stock dashboard: 5 minutes
-  - News: 30 minutes
-- PostgreSQL migration schema included for next phase
+- Is this stock moving up or down?
+- Is this move strong or weak?
+- Why are people paying attention right now?
 
-## Project structure
+The goal is simple: make stock learning feel more like guided practice and less like guessing.
 
-- `frontend/` Next.js app
-- `backend/` Express API
-- `data/` local JSON data source
-- `backend/sql/schema.sql` PostgreSQL schema for migration
+## The Product in One Line
 
-## Local API routes
+**StockSense is Duolingo-style stock analysis for students.**
 
-- `GET /stocks/search?q=...`
-- `POST /stocks/insights` with `{ "query": "NVDA" }` or `{ "query": "AI Chips" }`
-- `GET /stocks/:ticker?period=1w|1m|3m`
+## What Makes StockSense Different
 
-## Environment variables
+- **Plain-language first:** insights are written for beginners, not analysts.
+- **Visual confidence:** modern, clean UI that highlights signal over noise.
+- **Interpretability over hype:** each chart layer teaches a concept, not a prediction fantasy.
+- **Open access:** no login wall, no friction to start learning.
 
-Copy and set:
+## New: Educational Chart Lab (10 Toggles)
 
-- Root: `.env.example` -> `.env`
-- Backend: `backend/.env.example` -> `backend/.env` (optional, root `.env` is read)
-- Frontend: `frontend/.env.local.example` -> `frontend/.env.local`
+StockSense now includes a full chart-learning mode where users can turn concepts on/off and learn what each one means:
 
-Required for local run:
+1. Price Candles  
+2. Volume  
+3. 20-Day Moving Average  
+4. 50-Day Moving Average  
+5. 200-Day Moving Average  
+6. Support Levels  
+7. Resistance Levels  
+8. Trend Lines  
+9. RSI  
+10. Bollinger Bands  
 
-- `NEXT_PUBLIC_API_BASE_URL=http://localhost:4000`
+Each toggle includes a built-in info popup that explains:
 
-Optional for AI-generated insight text:
+- what the indicator shows and what a student gains from reading it
+- why it matters for long-term growth and better decision-making
 
-- `GEMINI_API_KEY=...`
+## Student Experience
 
-If Gemini key is not set, the insights endpoint still works using a deterministic local fallback summary.
+- Search by ticker, company, or theme
+- Get a quick bullish/bearish score
+- Read signal cards in everyday language
+- Explore chart concepts interactively
+- Ask for AI-generated stock context and reasoning
+- Follow names with a lightweight watchlist
 
-## Run
+## Why This Matters
 
-From repo root:
+Most beginner investors don’t fail because they lack intelligence.  
+They fail because the tools are confusing, intimidating, and overloaded with jargon.
+
+StockSense is designed to close that gap and help students build:
+
+- confidence
+- consistency
+- healthy, long-term investing habits
+
+## Quick Start
 
 ```bash
 npm install
@@ -71,28 +75,8 @@ In a second terminal:
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Then open your local app in the browser.
 
-## Scoring model
+---
 
-`score =`
-
-- `momentum * 0.25`
-- `volume * 0.15`
-- `sentiment * 0.20`
-- `earnings * 0.15`
-- `volatility * 0.10`
-- `market * 0.10`
-- `valuation * 0.05`
-
-Normalized to `0-100`:
-
-- `0-40` Bearish
-- `40-60` Neutral
-- `60-80` Bullish
-- `80-100` Very Bullish
-
-## Notes
-
-- Data is intentionally local JSON for portability and easy Docker migration next.
-- Financial jargon is translated into plain-language explanations for students.
+Built for students who want to understand the market, not just react to it.
